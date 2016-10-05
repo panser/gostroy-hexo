@@ -1,4 +1,123 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Hexo | null</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="stylesheet" type="text/css" href="//fonts.useso.com/css?family=Lato"></head><body><!-- Blog title and subtitle--><header class="wrapper header"><div class="container blog-title"><a id="logo" href="/." class="title">Hexo</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><div class="container nav-items"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a></div></header><article class="wrapper"><div id="index-main" class="container entries"><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/2016/10/05/aws-iam-police/">AWS IAM Polices</a></div><div class="post-content"><p>config for add accees by ip adresses and aws login<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;Version&quot;: &quot;2012-10-17&quot;,</div><div class="line">  &quot;Statement&quot;: [</div><div class="line">    &#123;</div><div class="line">      &quot;Sid&quot;: &quot;FirstStatement&quot;,</div><div class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</div><div class="line">      &quot;Principal&quot;: &#123;</div><div class="line">        &quot;AWS&quot;: [</div><div class="line">          &quot;$AWS_LOGIN&quot;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &quot;Action&quot;: [</div><div class="line">        &quot;es:*&quot;</div><div class="line">      ],</div><div class="line">      &quot;Resource&quot;: &quot;arn:aws:es:eu-central-1:423995045840:domain/repengine-dev/*&quot;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;Sid&quot;: &quot;SecondStatement&quot;,</div><div class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</div><div class="line">      &quot;Principal&quot;: &#123;</div><div class="line">        &quot;AWS&quot;: &quot;*&quot;</div><div class="line">      &#125;,</div><div class="line">      &quot;Action&quot;: &quot;es:*&quot;,</div><div class="line">      &quot;Resource&quot;: &quot;arn:aws:es:eu-central-1:423995045840:domain/repengine-dev/*&quot;,</div><div class="line">      &quot;Condition&quot;: &#123;</div><div class="line">        &quot;IpAddress&quot;: &#123;</div><div class="line">          &quot;aws:SourceIp&quot;: [</div><div class="line">            &quot;$IP1&quot;,</div><div class="line">            &quot;$IP2&quot;,</div><div class="line">            &quot;$IP3&quot;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></div><div class="post-meta"><div class="post-time">2016-10-05</div></div></div></div></div></article><div class="wrapper page-navigator-wrapper"></div><footer class="footer wrapper"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer-content">© 2016 <a href="/" rel="nofollow">Hexo</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/hexo-theme-noise">noise</a>.</div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
-    $(".fancybox").fancybox();
-});
-</script></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="author" content="Sergey Panov">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/gostroy-hexo/favicon.png" rel="icon">
+  <link rel="alternate" href="/gostroy-hexo/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/gostroy-hexo/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/gostroy-hexo/">Hexo</a></h1>
+  <h2><a href="/gostroy-hexo/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/gostroy-hexo/">Home</a></li>
+    
+      <li><a href="/gostroy-hexo/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-10-05T10:53:14.491Z"><a href="/gostroy-hexo/2016/10/05/aws-iam-police/">2016-10-05</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/gostroy-hexo/2016/10/05/aws-iam-police/">AWS IAM Polices</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>config for add accees by ip adresses and aws login<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;Version&quot;: &quot;2012-10-17&quot;,</div><div class="line">  &quot;Statement&quot;: [</div><div class="line">    &#123;</div><div class="line">      &quot;Sid&quot;: &quot;FirstStatement&quot;,</div><div class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</div><div class="line">      &quot;Principal&quot;: &#123;</div><div class="line">        &quot;AWS&quot;: [</div><div class="line">          &quot;$AWS_LOGIN&quot;</div><div class="line">        ]</div><div class="line">      &#125;,</div><div class="line">      &quot;Action&quot;: [</div><div class="line">        &quot;es:*&quot;</div><div class="line">      ],</div><div class="line">      &quot;Resource&quot;: &quot;arn:aws:es:eu-central-1:423995045840:domain/repengine-dev/*&quot;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;Sid&quot;: &quot;SecondStatement&quot;,</div><div class="line">      &quot;Effect&quot;: &quot;Allow&quot;,</div><div class="line">      &quot;Principal&quot;: &#123;</div><div class="line">        &quot;AWS&quot;: &quot;*&quot;</div><div class="line">      &#125;,</div><div class="line">      &quot;Action&quot;: &quot;es:*&quot;,</div><div class="line">      &quot;Resource&quot;: &quot;arn:aws:es:eu-central-1:423995045840:domain/repengine-dev/*&quot;,</div><div class="line">      &quot;Condition&quot;: &#123;</div><div class="line">        &quot;IpAddress&quot;: &#123;</div><div class="line">          &quot;aws:SourceIp&quot;: [</div><div class="line">            &quot;$IP1&quot;,</div><div class="line">            &quot;$IP2&quot;,</div><div class="line">            &quot;$IP3&quot;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>for check police <a href="https://policysim.aws.amazon.com/home/index.jsp" target="_blank" rel="external">https://policysim.aws.amazon.com/home/index.jsp</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:panser.github.io/gostroy-hexo">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 Sergey Panov
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/gostroy-hexo/js/jquery.imagesloaded.min.js"></script>
+<script src="/gostroy-hexo/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/gostroy-hexo/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/gostroy-hexo/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
